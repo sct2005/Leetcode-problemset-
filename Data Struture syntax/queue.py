@@ -1,25 +1,26 @@
-queue = []
-queue.append('A')
-queue.append('B')
-queue.append('C')
-queue.append("D")
+#LeetCode 225 - implement a stack using queues
 
-print("Queue:",queue)
+#LIFO queue -- opertions = puch , popremove top  , top(top element) , empty
+# use dequeue  - no indexing - queue operations only 
 
-#peek 
-frontElement = queue[0]
-print("Peek:", frontElement)
+from collections import deque
 
-#Dequeue
-poppedElement = queue.pop(0)
-print("Dequeue:" , poppedElement)
+class MyStack:
 
-print("Queue after Dequeue" , queue)
+    def __init__(self):# the constructer runs automatically whenever you create a new instance of the class , sets up variables or data strutures
+        #that will be used later 
+    
+        self.q = deque
 
-#isEmpty 
-isEmpty = not bool(queue)
-print("isEmpty:" , isEmpty)
+    def push(self, x: int) -> None:
+        #push element x on stack, in queue based u hhave to re structure the queue,so last element becomes the top 
+        pass
 
-#size
+    def pop(self) -> int:
+        pass#remocves top element and returns it , only queue operations (append,pop;est ) should be used
 
-print("Size: ", len(queue))
+    def top(self) -> int:
+        pass # returns top element without removing it 
+
+    def empty(self) -> bool:# return true if empty 
+        return not self.q
