@@ -1,24 +1,13 @@
-
 words = ["abba","baba","bbaa","cd","cd"]
 
 
+def soultion_1(words): #O(n^2)
+    for i in words:
+        for k in words:
+            if sorted(i) == sorted(k):
+                words.remove(k)
 
-def array_alter(words):
-    for word in words:
-            
+    print(words)
 
-        if sorted(word) in words:
-            words.remove(word)
-            print("a")
-        else:
-            continue
+soultion_1(words)
 
-
-array_alter(words)
-
-
-            
-
-
-        
-    
