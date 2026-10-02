@@ -62,7 +62,64 @@ node1 = deleteSpecificNode(node1, node4)
 
 print("\nAfter deletion:")
 traverseAndPrint(node1)
-    
+
+
+
+class ListNode: 
+    def __init__(self, val = 0, next = None):
+        self.val = val# the data stored in the node 
+        self.next = next#refrence to the next node , (None = end of list)
+
+
+class LinkedList:
+    def __init__(self):
+        self.head = None # empty list no node yet 
+        self.size = 0  #track length so dont have to walk the list 
+
+
+
+    def append(self, val):# O(n) must walk to end
+        node = ListNode(val) # create new node
+        if not self.head:# empty list 
+            self.head = node# neew node becomes the head 
+        else:
+            cur = self.head#start at head 
+            while cur.next:#walk till last node 
+                cur = cur.nex#step foward
+            cur.next = node#attach node after tail 
+        self.size += 1 # update size  
+
+
+
+
+    def prepend(self, val):# O(1) no walking needed 
+        self.head = ListNode(val, self.head)#new node points at old head then becomes new head 
+        self.size += 1
+
+
+
+    def delete(self, val):# O(n) delete first match 
+        dummy = ListNode(0, self.head)# dummy sits before head , so deleting the head dosent lead to any special cases 
+        prev, cur = dummy, self.head# prev trails one steeep behied 
+
+        while cur: #scan list
+            if cur.val == val:#found node to reemove 
+                prev.next = cur.next # skip over (unlink)
+                self.size -= 1
+                break #stop after first match 
+            prev, cur = cur, cur.next # advance both pointers 
+        self.head = dummy.next # head may have changed
+
+
+
+    def __iter__(self):
+        cur = self.head # start at head 
+        while cur:# untill fall off end 
+            yield cur.val # hand back value 
+            cur = cur.next # move to next node 
+            
+
+
 
 
 
